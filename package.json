@@ -1,5 +1,5 @@
 {
-  "name": "jquery-mail",
+  "name": "dom-mail",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,15 +9,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/a-gehlot/JQ-mail.git"
+    "url": "git+https://github.com/a-gehlot/DOM-mail.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/a-gehlot/JQ-mail/issues"
+    "url": "https://github.com/a-gehlot/DOM-mail/issues"
   },
-  "homepage": "https://github.com/a-gehlot/JQ-mail#readme",
+  "homepage": "https://github.com/a-gehlot/DOM-mail#readme",
   "dependencies": {
     "webpack": "^5.72.1",
     "webpack-cli": "^4.9.2",

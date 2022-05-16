@@ -15,7 +15,7 @@
   \**********************/
 /***/ (() => {
 
-eval("console.log(\"It's working\")\n\n//# sourceURL=webpack://jquery-mail/./src/index.js?");
+eval("window.addEventListener('DOMContentLoaded', (e) => {\n    \n})\n\n//# sourceURL=webpack://jquery-mail/./src/index.js?");
 
 /***/ })
 
