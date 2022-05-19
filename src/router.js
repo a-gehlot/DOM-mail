@@ -1,6 +1,7 @@
 class Router {
-    constructor(node) {
+    constructor(node, routes) {
         this.node = node;
+        this.routes = routes;
     }
 
     start() {
@@ -11,15 +12,18 @@ class Router {
     activeRoute() {
         let frag = window.location.hash;
         frag = frag.split('#')[1];
-        return frag;
+        return this.routes[frag];
     }
 
     render() {
         this.node.innerHTML = "";
-        let name = this.activeRoute();
-        let p = document.createElement("p");
-        p.innerHTML = name;
-        this.node.appendChild(p);
+        let component = this.activeRoute();
+        if (component) {
+            this.node.innerHTML = "";
+            let p = document.createElement("p");
+            p.innerHTML = component.render().outerHTML
+            this.node.appendChild(p);
+        }
     }
 }
 
