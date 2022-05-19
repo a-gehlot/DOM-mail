@@ -9,6 +9,7 @@ window.addEventListener('DOMContentLoaded', (e) => {
     var content = document.querySelector(".content");
     let router = new Router(content, routes);
     router.start();
+    window.location.hash = "#inbox"
     var sidebar = document.querySelectorAll(".sidebar-nav li")
     sidebar.forEach((node) => {
         node.addEventListener("click", (e) => {

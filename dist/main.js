@@ -13,9 +13,9 @@
 /*!**********************!*\
   !*** ./src/inbox.js ***!
   \**********************/
-/***/ ((module) => {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("const Inbox = {\n\n    render: function() {\n        var message = document.createElement('ul');\n        message.innerHTML = \"An Inbox Message\";\n        return message;\n    }\n}\n\nmodule.exports = Inbox;\n\n//# sourceURL=webpack://dom-mail/./src/inbox.js?");
+eval("const MessageStore = __webpack_require__(/*! ./message_store */ \"./src/message_store.js\");\n\nconst Inbox = {\n\n    render: function() {\n        var message = document.createElement('ul');\n        let innerMessage = MessageStore.getInboxMessages();\n        innerMessage.forEach((piece) => {\n            message.innerHTML += this.renderMessage(piece);\n        })\n        return message;\n    },\n\n    renderMessage: function(message) {\n        li = document.createElement('li');\n        li.className = \"message\";\n        li.innerHTML = `<span class=from>${message.from}</span><span class=subject>${message.subject}</span><span class=body>${message.body}</span>`\n        return li.outerHTML;\n    }\n}\n\nmodule.exports = Inbox;\n\n//# sourceURL=webpack://dom-mail/./src/inbox.js?");
 
 /***/ }),
 
@@ -25,7 +25,17 @@ eval("const Inbox = {\n\n    render: function() {\n        var message = documen
   \**********************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("const Inbox = __webpack_require__(/*! ./inbox */ \"./src/inbox.js\");\nconst Router = __webpack_require__(/*! ./router */ \"./src/router.js\");\n\nconst routes = {\n    inbox: Inbox\n}\n\nwindow.addEventListener('DOMContentLoaded', (e) => {\n    var content = document.querySelector(\".content\");\n    let router = new Router(content, routes);\n    router.start();\n    var sidebar = document.querySelectorAll(\".sidebar-nav li\")\n    sidebar.forEach((node) => {\n        node.addEventListener(\"click\", (e) => {\n            let loc = node.innerText.toLowerCase();\n            window.location.hash = loc;\n        })\n    })\n})\n\n//# sourceURL=webpack://dom-mail/./src/index.js?");
+eval("const Inbox = __webpack_require__(/*! ./inbox */ \"./src/inbox.js\");\nconst Router = __webpack_require__(/*! ./router */ \"./src/router.js\");\n\nconst routes = {\n    inbox: Inbox\n}\n\nwindow.addEventListener('DOMContentLoaded', (e) => {\n    var content = document.querySelector(\".content\");\n    let router = new Router(content, routes);\n    router.start();\n    window.location.hash = \"#inbox\"\n    var sidebar = document.querySelectorAll(\".sidebar-nav li\")\n    sidebar.forEach((node) => {\n        node.addEventListener(\"click\", (e) => {\n            let loc = node.innerText.toLowerCase();\n            window.location.hash = loc;\n        })\n    })\n})\n\n//# sourceURL=webpack://dom-mail/./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/message_store.js":
+/*!******************************!*\
+  !*** ./src/message_store.js ***!
+  \******************************/
+/***/ ((module) => {
+
+eval("var messages = {\n    sent: [\n        {\n            to: \"friend@mail.com\",\n            subject: \"Check this out\",\n            body: \"It's so cool\"\n        },\n        { to: \"person@mail.com\", \n        subject: \"zzz\", \n        body: \"so booring\" }\n    ],\n    inbox: [\n        {\n            from: \"grandma@mail.com\",\n            subject: \"Fwd: Fwd: Fwd: Check this out\",\n            body:\n                \"Stay at home mom discovers cure for leg cramps. Doctors hate her\"\n        },\n        {\n            from: \"person@mail.com\",\n            subject: \"Questionnaire\",\n            body: \"Take this free quiz win $1000 dollars\"\n        }\n    ]\n}\n\nconst MessageStore = {\n    getInboxMessages: function() {\n        return messages.inbox;\n    },\n\n    getSentMessages: function() {\n        return messages.sent;\n    }\n}\n\nmodule.exports = MessageStore;\n\n//# sourceURL=webpack://dom-mail/./src/message_store.js?");
 
 /***/ }),
 
