@@ -5,7 +5,7 @@ const Sent = {
         var message = document.createElement('ul');
         let innerMessage = MessageStore.getSentMessages();
         innerMessage.forEach((piece) => {
-            message.innerHTML += this.renderMessage(piece);
+            message.appendChild(this.renderMessage(piece));
         })
         return message;
     },
@@ -14,7 +14,7 @@ const Sent = {
         li = document.createElement('li');
         li.className = "message";
         li.innerHTML = `<span class=to>${message.to}</span><span class=subject>${message.subject}</span><span class=body>${message.body}</span>`
-        return li.outerHTML;
+        return li;
     }
 }
 

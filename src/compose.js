@@ -6,6 +6,12 @@ const Compose = {
         let div = document.createElement("div");
         div.className = "new-message";
         div.innerHTML = this.renderForm();
+        div.addEventListener("change", (e) => {
+            let name = e.target.name;
+            let val = e.target.value
+            MessageStore.updateDraftField(name, val);
+        })
+        console.log(div);
         return div;
     },
 

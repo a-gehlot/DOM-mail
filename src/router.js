@@ -19,10 +19,7 @@ class Router {
         this.node.innerHTML = "";
         let component = this.activeRoute();
         if (component) {
-            this.node.innerHTML = "";
-            let p = document.createElement("p");
-            p.innerHTML = component.render().outerHTML
-            this.node.appendChild(p);
+            this.node.appendChild(component.render())
         }
     }
 }
