@@ -11,7 +11,11 @@ const Compose = {
             let val = e.target.value
             MessageStore.updateDraftField(name, val);
         })
-        console.log(div);
+        div.addEventListener("submit", (e) => {
+            e.preventDefault();
+            MessageStore.sendDraft();
+            window.location.hash = "inbox"
+        })
         return div;
     },
 
