@@ -1,4 +1,4 @@
-const MessageStore = require("./message_store");
+const { MessageStore } = require("./message_store");
 
 const Inbox = {
 
